@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SOS Game</title>
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+</head>
+<body>
+
+<header>
+  <h1>⭕ SOS Game</h1>
+</header>
+
+<div class="tool-container">
+  <a href="../games.html">← Back</a>
+
+  <!-- Mode Selection -->
+  <div class="button-group" id="modeGroup">
+    <button onclick="selectMode(this, 'pvp')">1 vs 1</button>
+    <button onclick="selectMode(this, 'ai')">Vs Computer</button>
+    <button onclick="selectMode(this, 'team')">2 vs 2</button>
+  </div>
+
+  <p>Mode: <span id="modeLabel">1 vs 1</span></p>
+  <p>Turn: <span id="turn">S</span></p>
+
+  <!-- Game Grid -->
+  <div id="grid"></div>
+
+  <div class="button-group">
+    <button onclick="resetGame()">Restart</button>
+  </div>
+
+  <p id="result"></p>
+</div>
+
+<script src="../js/sos.js"></script>
+</body>
+</html>

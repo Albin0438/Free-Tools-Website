@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sudoku</title>
+
+  <link rel="icon" href="../favicon.png">
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+</head>
+<body>
+
+<header>
+  <h1>🧩 Sudoku</h1>
+</header>
+
+<div class="tool-container">
+  <a href="../games.html">← Back</a>
+
+  <div class="button-group" id="difficultyGroup">
+    <button onclick="selectDifficulty(this, 'easy')">Easy</button>
+    <button onclick="selectDifficulty(this, 'medium')">Medium</button>
+    <button onclick="selectDifficulty(this, 'hard')">Hard</button>
+   </div>
+
+  <p>⏱️ Time: <span id="timer">0</span>s | ❌ Mistakes: <span id="mistakes">0</span></p>
+
+  <div id="sudoku"></div>
+
+  <div class="button-group">
+    <button onclick="checkSudoku()">Check</button>
+    <button onclick="reviewSudoku()">Review</button>
+    <button onclick="resetGame()">Reset</button>
+</div>
+
+  <p id="status"></p>
+</div>
+
+<script src="../js/sudoku.js"></script>
+</body>
+</html>

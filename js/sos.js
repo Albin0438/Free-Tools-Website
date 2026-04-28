@@ -1,14 +1,35 @@
+/* ==========================
+   ELEMENTS
+========================== */
+
 const grid = document.getElementById("grid");
 const turnText = document.getElementById("turn");
 const resultText = document.getElementById("result");
 const modeLabel = document.getElementById("modeLabel");
 
-let board = Array(9).fill("");
+/* ==========================
+   STATE
+========================== */
+
+let board = [];
 let current = "S";
 let mode = "pvp";
 let gameOver = false;
 
-/* Create grid */
+/* ==========================
+   CONSTANTS
+========================== */
+
+const patterns = [
+  [0,1,2],[3,4,5],[6,7,8],
+  [0,3,6],[1,4,7],[2,5,8],
+  [0,4,8],[2,4,6]
+];
+
+/* ==========================
+   GRID SETUP
+========================== */
+
 function createGrid() {
   grid.innerHTML = "";
   board = Array(9).fill("");
@@ -18,24 +39,32 @@ function createGrid() {
     const cell = document.createElement("button");
     cell.dataset.index = i;
 
-    cell.addEventListener("click", () => handleMove(i, cell));
+    cell.addEventListener("click", () => handleMove(i));
 
     grid.appendChild(cell);
   }
 }
 
-/* Handle move */
-function handleMove(i, cell) {
+/* ==========================
+   MOVE HANDLER
+========================== */
+
+function handleMove(i) {
   if (board[i] || gameOver) return;
 
+  const cell = grid.children[i];
   board[i] = current;
   cell.textContent = current;
 
   const line = checkSOS();
 
   if (line) {
-    drawLine(line);
-    resultText.textContent = `${current} formed SOS! 🎉`;
+    endGame(line);
+    return;
+  }
+
+  if (isDraw()) {
+    resultText.textContent = "It's a draw 🤝";
     gameOver = true;
     return;
   }
@@ -47,46 +76,20 @@ function handleMove(i, cell) {
   }
 }
 
-/* Turn logic */
+/* ==========================
+   TURN SWITCH
+========================== */
+
 function switchTurn() {
   current = current === "S" ? "O" : "S";
   turnText.textContent = current;
 }
 
-/* Active button helper */
-function setActiveButton(groupSelector, clickedButton) {
-  const buttons = document.querySelectorAll(groupSelector + " button");
-  buttons.forEach(btn => btn.classList.remove("active"));
-  clickedButton.classList.add("active");
-}
+/* ==========================
+   WIN / DRAW
+========================== */
 
-/* Mode selection */
-function selectMode(btn, modeType) {
-  setActiveButton("#modeGroup", btn);
-  setMode(modeType);
-}
-
-/* Mode setup */
-function setMode(m) {
-  mode = m;
-
-  // Update label (IMPORTANT for UX)
-  modeLabel.textContent =
-    m === "pvp" ? "1 vs 1" :
-    m === "ai" ? "Vs Computer" :
-    "2 vs 2";
-
-  resetGame();
-}
-
-/* SOS detection */
 function checkSOS() {
-  const patterns = [
-    [0,1,2],[3,4,5],[6,7,8],
-    [0,3,6],[1,4,7],[2,5,8],
-    [0,4,8],[2,4,6]
-  ];
-
   for (let p of patterns) {
     if (
       board[p[0]] === "S" &&
@@ -97,26 +100,120 @@ function checkSOS() {
   return null;
 }
 
-/* Highlight win */
+function isDraw() {
+  return board.every(cell => cell !== "");
+}
+
+function endGame(pattern) {
+  drawLine(pattern);
+  gameOver = true;
+
+  let msg = "";
+
+  if (mode === "ai") {
+    msg = current === "S"
+      ? "You win 🎉"
+      : "Computer wins 🤖";
+  } else if (mode === "team") {
+    msg = current === "S"
+      ? "Team S wins 🎉"
+      : "Team O wins 🎉";
+  } else {
+    msg = `${current} wins 🎉`;
+  }
+
+  resultText.textContent = `${msg} (SOS formed)`;
+}
+
+/* ==========================
+   VISUALS
+========================== */
+
 function drawLine(pattern) {
   pattern.forEach(i => {
     grid.children[i].classList.add("sos-win");
   });
 }
 
-/* AI move */
+/* ==========================
+   AI (SMART)
+========================== */
+
 function aiMove() {
-  const empty = board
-    .map((v, i) => v === "" ? i : null)
-    .filter(v => v !== null);
+  if (gameOver) return;
 
-  if (empty.length === 0) return;
+  // 1. Try to WIN
+  let move = findBestMove("O");
+  if (move !== null) {
+    handleMove(move);
+    return;
+  }
 
+  // 2. Try to BLOCK player
+  move = findBestMove("S");
+  if (move !== null) {
+    handleMove(move);
+    return;
+  }
+
+  // 3. Random fallback
+  const empty = getEmptyCells();
   const rand = empty[Math.floor(Math.random() * empty.length)];
-  handleMove(rand, grid.children[rand]);
+  handleMove(rand);
 }
 
-/* Reset */
+/* Find move that creates SOS */
+function findBestMove(player) {
+  for (let i = 0; i < 9; i++) {
+    if (board[i] !== "") continue;
+
+    board[i] = player;
+
+    const win = checkSOS();
+
+    board[i] = "";
+
+    if (win) return i;
+  }
+  return null;
+}
+
+function getEmptyCells() {
+  return board
+    .map((v, i) => v === "" ? i : null)
+    .filter(v => v !== null);
+}
+
+/* ==========================
+   MODE HANDLING
+========================== */
+
+function setActiveButton(groupSelector, clickedButton) {
+  const buttons = document.querySelectorAll(groupSelector + " button");
+  buttons.forEach(btn => btn.classList.remove("active"));
+  clickedButton.classList.add("active");
+}
+
+function selectMode(btn, modeType) {
+  setActiveButton("#modeGroup", btn);
+  setMode(modeType);
+}
+
+function setMode(m) {
+  mode = m;
+
+  modeLabel.textContent =
+    m === "pvp" ? "1 vs 1" :
+    m === "ai" ? "Vs Computer" :
+    "2 vs 2";
+
+  resetGame();
+}
+
+/* ==========================
+   RESET
+========================== */
+
 function resetGame() {
   current = "S";
   turnText.textContent = current;
@@ -124,11 +221,17 @@ function resetGame() {
   createGrid();
 }
 
-/* Init */
-createGrid();
+/* ==========================
+   INIT
+========================== */
 
-/* Set default mode button active */
-document.querySelector("#modeGroup button").classList.add("active");
+window.onload = () => {
+  createGrid();
 
-/* Set default mode label */
-modeLabel.textContent = "1 vs 1";
+  // default UI state
+  const firstBtn = document.querySelector("#modeGroup button");
+  if (firstBtn) firstBtn.classList.add("active");
+
+  modeLabel.textContent = "1 vs 1";
+  turnText.textContent = current;
+};

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,10 +19,16 @@
 <header>
   <h1>Free Online Tools</h1>
   <p>Simple, fast, and useful tools for everyday tasks</p>
-  <button onclick="toggleTheme()">Toggle Theme</button>
+  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 </header>
 
 <main class="container">
+
+  <!-- SEO supporting text -->
+  <p class="intro">
+    Use our collection of free online tools including word counter, text converter,
+    BMI calculator, password generator, and more. Fast, simple, and easy to use.
+  </p>
 
   <input 
     type="text" 
@@ -51,18 +56,24 @@
     </a>
     
     <a href="tools/age-calculator.html" class="tool-card">
-    <h2>Age Calculator</h2>
-    <p>Calculate your exact age</p>
+      <h2>Age Calculator</h2>
+      <p>Calculate your exact age</p>
     </a>
 
     <a href="tools/password-generator.html" class="tool-card">
-    <h2>Password Generator</h2>
-    <p>Generate secure passwords</p>
+      <h2>Password Generator</h2>
+      <p>Generate secure passwords</p>
     </a>
 
     <a href="tools/unit-converter.html" class="tool-card">
-    <h2>Unit Converter</h2>
-    <p>Convert common units easily</p>
+      <h2>Unit Converter</h2>
+      <p>Convert common units easily</p>
+    </a>
+
+    <!-- Feedback card (fixed position) -->
+    <a href="feedback.html" class="tool-card">
+      <h2>Feedback</h2>
+      <p>Request features or report issues</p>
     </a>
 
   </div>
@@ -73,7 +84,6 @@
   <p>© 2026 Free Tools Website</p>
 </footer>
 
-<!-- External JS -->
 <script src="script.js"></script>
 
 </body>

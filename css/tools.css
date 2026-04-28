@@ -36,13 +36,6 @@ input:focus {
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
 }
 
-/* Range slider (password length) */
-input[type="range"] {
-  padding: 0;
-  height: 6px;
-  cursor: pointer;
-}
-
 /* Buttons */
 .tool-container button {
   margin-top: 12px;
@@ -65,7 +58,7 @@ input[type="range"] {
   border: 1px solid #334155;
 }
 
-/* Reusable output textarea (IMPORTANT) */
+/* Reusable output textarea */
 .output textarea {
   margin-top: 10px;
   font-family: monospace;
@@ -75,7 +68,7 @@ input[type="range"] {
   resize: vertical;
 }
 
-/* Links inside tool pages */
+/* Links */
 .tool-container a {
   display: inline-block;
   margin-bottom: 15px;
@@ -85,6 +78,37 @@ input[type="range"] {
 
 .tool-container a:hover {
   text-decoration: underline;
+}
+
+/* ==========================
+   PASSWORD TOOL OPTIONS
+========================== */
+
+.options {
+  margin-top: 10px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+  cursor: pointer;
+  font-size: 15px;
+  color: #e2e8f0;
+}
+
+/* Checkbox size */
+.option input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Length message */
+#lengthMessage {
+  font-size: 13px;
+  margin-top: 4px;
 }
 
 /* BMI status */
@@ -124,7 +148,7 @@ input[type="range"] {
   border: 1px solid #cbd5f5;
 }
 
-.light-mode label {
+.light-mode label,
+.light-mode .option {
   color: #334155;
 }
-

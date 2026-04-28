@@ -1,21 +1,43 @@
-const lengthSlider = document.getElementById("length");
-const lengthValue = document.getElementById("lengthValue");
 const output = document.getElementById("passwordOutput");
+const lengthInput = document.getElementById("length");
+const lengthMessage = document.getElementById("lengthMessage");
 
-// Update length display
-lengthSlider.addEventListener("input", () => {
-  lengthValue.textContent = lengthSlider.value;
+// Live warning while typing
+lengthInput.addEventListener("input", () => {
+  let length = parseInt(lengthInput.value);
+
+  if (!length || length <= 0) {
+    lengthMessage.textContent = "Enter a valid length";
+    lengthMessage.style.color = "#ef4444";
+    return;
+  }
+
+  if (length > 260) {
+    lengthMessage.textContent = "❌ Max allowed is 260";
+    lengthMessage.style.color = "#ef4444";
+  } else if (length > 160) {
+    lengthMessage.textContent = "⚠ Very long password may be impractical";
+    lengthMessage.style.color = "#facc15";
+  } else {
+    lengthMessage.textContent = "Recommended: 8–128 characters";
+    lengthMessage.style.color = "#94a3b8";
+  }
 });
 
 // Generate password
 function generatePassword() {
-  const length = parseInt(lengthSlider.value);
+  let length = parseInt(lengthInput.value);
+
+  if (!length || length <= 0 || length > 260) {
+    alert("Enter a valid length (1–260)");
+    return;
+  }
+
   const useUpper = document.getElementById("uppercase").checked;
   const useLower = document.getElementById("lowercase").checked;
   const useNumbers = document.getElementById("numbers").checked;
   const useSymbols = document.getElementById("symbols").checked;
   const noSimilar = document.getElementById("noSimilar").checked;
-  const separator = document.getElementById("separator").value;
 
   let chars = "";
 
@@ -39,20 +61,18 @@ function generatePassword() {
     password += chars[Math.floor(Math.random() * chars.length)];
   }
 
-  // Apply separator (optional)
-  if (separator) {
-    password = password.split("").join(separator);
-  }
-
   output.value = password;
 
-  // Auto resize textarea width feel
+  // Auto resize textarea
   output.style.height = "auto";
-  output.style.height = (output.scrollHeight) + "px";
+  output.style.height = output.scrollHeight + "px";
 }
 
 // Copy
 function copyPassword() {
+  if (!output.value) return;
+
   navigator.clipboard.writeText(output.value)
-    .then(() => alert("Copied!"));
+    .then(() => alert("Copied!"))
+    .catch(() => alert("Failed to copy"));
 }

@@ -7,10 +7,15 @@
   <title>Free Online Tools - Word Counter, BMI Calculator, Password Generator & More</title>
 
   <meta name="description" content="Free online tools including word counter, text case converter, BMI calculator, password generator and more. Simple, fast, and easy to use.">
+  <meta name="robots" content="index, follow">
 
-  <link rel="icon" href="favicon.png" type="image/png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Free Online Tools">
+  <meta property="og:description" content="Free tools like word counter, BMI calculator, password generator and more.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="favicon.png">
 
+  <link rel="icon" href="favicon.png">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -19,17 +24,21 @@
 <header>
   <h1>Free Online Tools</h1>
   <p>Simple, fast, and useful tools for everyday tasks</p>
-  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
 </header>
 
 <main class="container">
 
-  <!-- SEO supporting text -->
-  <p class="intro">
-    Use our collection of free online tools including word counter, text converter,
-    BMI calculator, password generator, and more. Fast, simple, and easy to use.
-  </p>
+  <!-- SEO intro -->
+  <section class="intro">
+    <p>
+      Explore a collection of free online tools designed for students, developers, and everyday users.
+      Use tools like a word counter, text case converter, BMI calculator, password generator, and more.
+      Fast, simple, and accessible from any device.
+    </p>
+  </section>
 
+  <!-- Search -->
   <input 
     type="text" 
     id="search" 
@@ -38,7 +47,8 @@
     aria-label="Search tools"
   >
 
-  <div class="tools-grid" id="toolsList">
+  <!-- Tools Section -->
+  <section class="tools-grid" id="toolsList">
 
     <a href="tools/word-counter.html" class="tool-card">
       <h2>Word Counter</h2>
@@ -62,46 +72,60 @@
 
     <a href="tools/password-generator.html" class="tool-card">
       <h2>Password Generator</h2>
-      <p>Generate secure passwords</p>
+      <p>Generate secure passwords instantly</p>
     </a>
 
     <a href="tools/unit-converter.html" class="tool-card">
       <h2>Unit Converter</h2>
-      <p>Convert common units easily</p>
+      <p>Convert common units quickly and easily</p>
     </a>
 
     <a href="tools/json-formatter.html" class="tool-card">
-    <h2>JSON Formatter</h2>
-    <p>Format and validate JSON</p>
+      <h2>JSON Formatter</h2>
+      <p>Format and validate JSON data</p>
     </a>
 
     <a href="tools/password-checker.html" class="tool-card">
-    <h2>Password Strength Checker</h2>
-    <p>Check how strong your password is</p>
+      <h2>Password Strength Checker</h2>
+      <p>Check how strong your password is</p>
     </a>
 
     <a href="tools/image-compressor.html" class="tool-card">
-    <h2>Image Compressor</h2>
-    <p>Reduce image size instantly</p>
+      <h2>Image Compressor</h2>
+      <p>Reduce image file size instantly</p>
     </a>
 
     <a href="tools/uuid-generator.html" class="tool-card">
-    <h2>UUID Generator</h2>
-    <p>Generate unique IDs instantly</p>
+      <h2>UUID Generator</h2>
+      <p>Generate unique IDs instantly</p>
     </a>
 
-    <!-- Feedback card (fixed position) -->
+    <a href="tools/dice-roller.html" class="tool-card">
+      <h2>Dice Roller</h2>
+      <p>Roll virtual dice instantly</p>
+    </a>
+
+    <a href="tools/random-number.html" class="tool-card">
+      <h2>Random Number Generator</h2>
+      <p>Generate random numbers for decisions and games</p>
+    </a>
+
+    <a href="tools/yes-no-picker.html" class="tool-card">
+      <h2>Yes / No Picker</h2>
+      <p>Get a quick yes or no answer instantly</p>
+    </a>
+
     <a href="feedback.html" class="tool-card">
       <h2>Feedback</h2>
       <p>Request features or report issues</p>
     </a>
 
-  </div>
+  </section>
 
 </main>
 
 <footer>
-  <p>© 2026 Free Tools Website</p>
+  <p>© 2026 Free Tools Website. All rights reserved.</p>
 </footer>
 
 <script src="script.js"></script>

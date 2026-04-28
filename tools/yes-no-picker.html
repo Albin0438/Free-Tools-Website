@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Yes / No Picker</title>
+
+  <link rel="icon" href="../favicon.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+</head>
+<body>
+
+<header>
+  <h1>👍 Yes / No Picker</h1>
+  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+</header>
+
+<div class="tool-container">
+  <a href="../index.html">← Back</a>
+
+  <label>Ask a question</label>
+  <input type="text" id="question" placeholder="Should I go out today?">
+
+  <button onclick="pickAnswer()">Get Answer</button>
+
+  <div class="output">
+    <p id="answerResult">Answer: -</p>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Free Tools Website</p>
+</footer>
+
+</body>
+
+<script src="../script.js"></script>
+<script src="../js/yes-no-picker.js"></script>
+
+</html>

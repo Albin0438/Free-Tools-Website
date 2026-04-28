@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dice Roller</title>
+
+  <link rel="icon" href="../favicon.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+</head>
+
+<body>
+
+<header>
+  <h1>🎲 Dice Roller</h1>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
+</header>
+
+<div class="tool-container">
+  <a href="../index.html" class="back-link">← Back</a>
+
+  <label for="diceCount">Number of Dice</label>
+  <input 
+    type="number" 
+    id="diceCount" 
+    value="1" 
+    min="1" 
+    max="10"
+    placeholder="Enter number of dice"
+  >
+
+  <button onclick="rollDice()">Roll Dice</button>
+
+  <div class="output">
+    <p id="diceResult">Roll the dice 🎲</p>
+  </div>
+</div>
+
+<!-- Optional sound -->
+<audio id="diceSound" src="../sounds/dice.mp3"></audio>
+
+<footer>
+  <p>© 2026 Free Tools Website</p>
+</footer>
+
+<!-- Scripts (correct placement) -->
+<script src="../script.js"></script>
+<script src="../js/dice-roller.js"></script>
+
+</body>
+</html>

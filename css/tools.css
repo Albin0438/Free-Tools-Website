@@ -11,13 +11,13 @@
 /* Labels */
 label {
   display: block;
-  margin-top: 15px;
-  margin-bottom: 5px;
+  margin-top: 16px;
+  margin-bottom: 6px;
   color: #cbd5f5;
   font-size: 14px;
 }
 
-/* Inputs & Textarea Enhancements */
+/* Inputs & Textarea */
 textarea,
 input {
   width: 100%;
@@ -36,10 +36,24 @@ input:focus {
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
 }
 
-/* Buttons group */
+/* Range slider (password length) */
+input[type="range"] {
+  padding: 0;
+  height: 6px;
+  cursor: pointer;
+}
+
+/* Buttons */
 .tool-container button {
-  margin-top: 10px;
+  margin-top: 12px;
   margin-right: 10px;
+}
+
+/* Button group (optional future use) */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 /* Output box */
@@ -51,23 +65,40 @@ input:focus {
   border: 1px solid #334155;
 }
 
-/* Result textarea */
-#outputText {
+/* Reusable output textarea (IMPORTANT) */
+.output textarea {
   margin-top: 10px;
+  font-family: monospace;
+  font-size: 15px;
+  min-height: 60px;
+  word-break: break-all;
+  resize: vertical;
 }
 
-/* BMI status base */
+/* Links inside tool pages */
+.tool-container a {
+  display: inline-block;
+  margin-bottom: 15px;
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+.tool-container a:hover {
+  text-decoration: underline;
+}
+
+/* BMI status */
 #bmiStatus {
   font-weight: bold;
 }
 
-/* Responsive tweaks */
+/* Responsive */
 @media (max-width: 600px) {
   .tool-container {
     padding: 15px;
   }
 
-  button {
+  .tool-container button {
     width: 100%;
     margin-bottom: 10px;
   }
@@ -76,6 +107,7 @@ input:focus {
 /* ==========================
    LIGHT MODE SUPPORT
 ========================== */
+
 .light-mode .tool-container {
   background: #ffffff;
 }
@@ -95,3 +127,4 @@ input:focus {
 .light-mode label {
   color: #334155;
 }
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator</title>
+
+  <link rel="icon" href="../favicon.png" type="image/png">  
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+</head>
+<body>
+
+<header>
+  <h1>Age Calculator</h1>
+  <p>Find your exact age</p>
+  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+</header>
+
+<main class="tool-container">
+  <a href="../index.html">← Back to Home</a>
+
+  <label>Date of Birth</label>
+  <input type="date" id="dob">
+
+  <button onclick="calculateAge()">Calculate Age</button>
+
+  <div class="output">
+    <p>Your Age: <span id="ageResult">-</span></p>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Free Tools Website</p>
+</footer>
+
+<script src="../script.js"></script>
+<script src="../js/age.js"></script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  color: #94a3b8;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: none;
+  background: #1e293b;
+  color: #e2e8f0;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.theme-toggle:hover {
+  background: #334155;
+}
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Search box */
+.search-box {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 30px;
+  font-size: 16px;
+  outline: none;
+}
+
+/* Grid */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Tool cards */
+.tool-card {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #e2e8f0;
+  transition: 0.2s ease;
+  display: block;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  background: #334155;
+}
+
+.tool-card h2,
+.tool-card h3 {
+  margin-bottom: 8px;
+}
+
+.tool-card p {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* Tool page layout */
+.tool-container {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Inputs & textarea */
+textarea,
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  outline: none;
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+/* Buttons */
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #3b82f6;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #2563eb;
+}
+
+/* Output text */
+.output {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #38bdf8;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #64748b;
+  margin-top: 40px;
+}
+
+/* ==========================
+   LIGHT MODE
+========================== */
+.light-mode {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.light-mode header p {
+  color: #475569;
+}
+
+.light-mode .tool-card {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.light-mode .tool-card:hover {
+  background: #cbd5f5;
+}
+
+.light-mode input,
+.light-mode textarea {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.light-mode .theme-toggle {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.light-mode footer {
+  color: #475569;
+}

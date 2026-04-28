@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Converter</title>
+
+  <link rel="icon" href="../favicon.png" type="image/png">
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+</head>
+<body>
+
+<header>
+  <h1>Unit Converter</h1>
+  <p>Convert units easily</p>
+  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+</header>
+
+<main class="tool-container">
+  <a href="../index.html">← Back to Home</a>
+
+  <label>Value</label>
+  <input type="number" id="inputValue">
+
+  <label>Convert</label>
+  <select id="conversionType">
+    <option value="cmToIn">CM → Inches</option>
+    <option value="kgToLb">KG → Pounds</option>
+    <option value="kmToMi">KM → Miles</option>
+  </select>
+
+  <button onclick="convert()">Convert</button>
+
+  <div class="output">
+    <p>Result: <span id="result">-</span></p>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Free Tools Website</p>
+</footer>
+
+<script src="../script.js"></script>
+<script src="../js/converter.js"></script>
+</body>
+</html>

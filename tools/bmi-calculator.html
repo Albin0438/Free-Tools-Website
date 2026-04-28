@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>BMI Calculator - Free Online Tool</title>
+  <meta name="description" content="Calculate your Body Mass Index (BMI) instantly with this free online BMI calculator. Quick and easy health check.">
+
+  <link rel="icon" href="../favicon.png" type="image/png">
+
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+</head>
+<body>
+
+<header>
+  <h1>BMI Calculator</h1>
+  <p>Check your Body Mass Index</p>
+
+  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+</header>
+
+<main class="tool-container">
+
+  <a href="../index.html">← Back to Home</a>
+
+  <p>
+    This free BMI calculator helps you estimate your body mass index based on
+    your weight and height. Useful for basic health awareness.
+  </p>
+
+  <label for="weight">Weight (kg)</label>
+  <input 
+    type="number" 
+    id="weight" 
+    placeholder="Enter weight"
+    aria-label="Weight in kilograms"
+  >
+
+  <label for="height">Height (cm)</label>
+  <input 
+    type="number" 
+    id="height" 
+    placeholder="Enter height"
+    aria-label="Height in centimeters"
+  >
+
+  <button onclick="calculateBMI()">Calculate BMI</button>
+
+  <div class="output">
+    <p>BMI: <span id="bmiResult">0</span></p>
+    <p>Status: <span id="bmiStatus">-</span></p>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Free Tools Website</p>
+</footer>
+
+<!-- Scripts -->
+<script src="../script.js"></script>
+<script src="../js/bmi.js"></script>
+
+</body>
+</html>

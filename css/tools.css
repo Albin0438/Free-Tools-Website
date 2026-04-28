@@ -1,0 +1,97 @@
+/* Tool Page Specific Styling */
+
+.tool-container {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+  background: #020617;
+  border-radius: 16px;
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  color: #cbd5f5;
+  font-size: 14px;
+}
+
+/* Inputs & Textarea Enhancements */
+textarea,
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  background: #020617;
+  color: #e2e8f0;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+textarea:focus,
+input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Buttons group */
+.tool-container button {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+/* Output box */
+.output {
+  margin-top: 20px;
+  padding: 15px;
+  background: #020617;
+  border-radius: 12px;
+  border: 1px solid #334155;
+}
+
+/* Result textarea */
+#outputText {
+  margin-top: 10px;
+}
+
+/* BMI status base */
+#bmiStatus {
+  font-weight: bold;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .tool-container {
+    padding: 15px;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+/* ==========================
+   LIGHT MODE SUPPORT
+========================== */
+.light-mode .tool-container {
+  background: #ffffff;
+}
+
+.light-mode textarea,
+.light-mode input {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #cbd5f5;
+}
+
+.light-mode .output {
+  background: #f1f5f9;
+  border: 1px solid #cbd5f5;
+}
+
+.light-mode label {
+  color: #334155;
+}
